@@ -1,13 +1,23 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import CategoryFilter from '../components/CategoryFilter'
 import PizzaCard from '../components/PizzaCard'
 import { categories } from '../data/mocks/categories'
-import { pizzas } from '../data/mocks/pizzas'
 import { useCart } from '../hooks/useCart'
+import { getPizzas } from '../services/pizzaService'
 
 function Menu() {
   const [selectedCategory, setSelectedCategory] = useState('Todas')
+  const [pizzas, setPizzas] = useState([])
   const { addToCart } = useCart()
+
+  useEffect(() => {
+    async function loadPizzas() {
+      const pizzaList = await getPizzas()
+      setPizzas(pizzaList)
+    }
+
+    loadPizzas()
+  }, [])
 
   const filteredPizzas = useMemo(() => {
     if (selectedCategory === 'Todas') {
@@ -15,7 +25,7 @@ function Menu() {
     }
 
     return pizzas.filter((pizza) => pizza.categoria === selectedCategory)
-  }, [selectedCategory])
+  }, [pizzas, selectedCategory])
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-10">
@@ -35,7 +45,7 @@ function Menu() {
         />
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filteredPizzas.map((pizza) => (
           <PizzaCard key={pizza.id} pizza={pizza} onAddToCart={addToCart} />
         ))}

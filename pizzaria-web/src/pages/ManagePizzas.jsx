@@ -1,6 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { pizzas as mockPizzas } from '../data/mocks/pizzas'
+import {
+  createPizza,
+  deletePizza as deletePizzaRequest,
+  updatePizza,
+} from '../services/pizzaService'
 
 const emptyForm = {
   nome: '',
@@ -21,7 +26,7 @@ function ManagePizzas() {
     setForm((currentForm) => ({ ...currentForm, [name]: value }))
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
 
     const pizzaData = {
@@ -33,15 +38,19 @@ function ManagePizzas() {
     }
 
     if (editingId) {
+      const updatedPizza = await updatePizza(editingId, pizzaData)
+
       setPizzas((currentPizzas) =>
         currentPizzas.map((pizza) =>
-          pizza.id === editingId ? { ...pizzaData, id: editingId } : pizza,
+          pizza.id === editingId ? updatedPizza : pizza,
         ),
       )
     } else {
+      const newPizza = await createPizza(pizzaData)
+
       setPizzas((currentPizzas) => [
         ...currentPizzas,
-        { ...pizzaData, id: Date.now() },
+        newPizza,
       ])
     }
 
@@ -60,7 +69,9 @@ function ManagePizzas() {
     })
   }
 
-  function deletePizza(pizzaId) {
+  async function deletePizza(pizzaId) {
+    await deletePizzaRequest(pizzaId)
+
     setPizzas((currentPizzas) =>
       currentPizzas.filter((pizza) => pizza.id !== pizzaId),
     )

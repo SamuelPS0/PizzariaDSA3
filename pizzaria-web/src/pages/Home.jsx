@@ -1,11 +1,22 @@
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import PizzaCard from '../components/PizzaCard'
-import { pizzas } from '../data/mocks/pizzas'
 import { useCart } from '../hooks/useCart'
+import { getPizzas } from '../services/pizzaService'
 
 function Home() {
   const { addToCart } = useCart()
-  const featuredPizzas = pizzas.slice(0, 3)
+  const [pizzas, setPizzas] = useState([])
+  const featuredPizzas = useMemo(() => pizzas.slice(0, 3), [pizzas])
+
+  useEffect(() => {
+    async function loadPizzas() {
+      const pizzaList = await getPizzas()
+      setPizzas(pizzaList)
+    }
+
+    loadPizzas()
+  }, [])
 
   return (
     <>
@@ -28,11 +39,13 @@ function Home() {
               Ver cardápio
             </Link>
           </div>
-          <img
-            className="h-72 w-full rounded-lg object-cover shadow-lg md:h-96"
-            src={pizzas[0].imagem}
-            alt="Pizza saindo do forno"
-          />
+          {featuredPizzas[0] && (
+            <img
+              className="h-72 w-full rounded-lg object-cover shadow-lg md:h-96"
+              src={featuredPizzas[0].imagem}
+              alt="Pizza saindo do forno"
+            />
+          )}
         </div>
       </section>
 
