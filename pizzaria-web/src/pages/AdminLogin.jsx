@@ -35,9 +35,10 @@ function AdminLogin() {
           <input
             className="mt-2 w-full rounded-md border border-orange-200 px-3 py-3 outline-none focus:border-red-700"
             type="email"
-            placeholder="admin@bellapizza.com"
+            placeholder="admin@pizza.com"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
+            required
           />
         </label>
 
@@ -49,6 +50,7 @@ function AdminLogin() {
             placeholder="Digite sua senha"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            required
           />
         </label>
 

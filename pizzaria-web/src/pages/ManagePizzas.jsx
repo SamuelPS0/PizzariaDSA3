@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { pizzas as mockPizzas } from '../data/mocks/pizzas'
 
 const emptyForm = {
@@ -13,6 +14,7 @@ function ManagePizzas() {
   const [pizzas, setPizzas] = useState(mockPizzas)
   const [form, setForm] = useState(emptyForm)
   const [editingId, setEditingId] = useState(null)
+  const logged = localStorage.getItem('pizzaAdminLogged') === 'true'
 
   function handleChange(event) {
     const { name, value } = event.target
@@ -61,6 +63,27 @@ function ManagePizzas() {
   function deletePizza(pizzaId) {
     setPizzas((currentPizzas) =>
       currentPizzas.filter((pizza) => pizza.id !== pizzaId),
+    )
+  }
+
+  function cancelEdit() {
+    setForm(emptyForm)
+    setEditingId(null)
+  }
+
+  if (!logged) {
+    return (
+      <section className="mx-auto max-w-3xl px-4 py-12">
+        <div className="rounded-lg border border-orange-100 bg-white p-8 text-center">
+          <h1 className="text-3xl font-black text-stone-900">Acesso restrito</h1>
+          <Link
+            to="/admin/login"
+            className="mt-6 inline-flex rounded-md bg-red-700 px-5 py-3 font-bold text-white hover:bg-red-800"
+          >
+            Entrar
+          </Link>
+        </div>
+      </section>
     )
   }
 
@@ -121,12 +144,23 @@ function ManagePizzas() {
           placeholder="Descrição"
           required
         />
-        <button
-          type="submit"
-          className="rounded-md bg-red-700 px-4 py-3 font-bold text-white hover:bg-red-800 md:w-fit"
-        >
-          {editingId ? 'Salvar edição' : 'Cadastrar pizza'}
-        </button>
+        <div className="flex flex-col gap-3 sm:flex-row md:col-span-2">
+          <button
+            type="submit"
+            className="rounded-md bg-red-700 px-4 py-3 font-bold text-white hover:bg-red-800 sm:w-fit"
+          >
+            {editingId ? 'Salvar edição' : 'Cadastrar pizza'}
+          </button>
+          {editingId && (
+            <button
+              type="button"
+              onClick={cancelEdit}
+              className="rounded-md border border-orange-200 px-4 py-3 font-bold text-stone-700 hover:bg-orange-50 sm:w-fit"
+            >
+              Cancelar edição
+            </button>
+          )}
+        </div>
       </form>
 
       <div className="mt-8 overflow-x-auto rounded-lg border border-orange-100 bg-white">

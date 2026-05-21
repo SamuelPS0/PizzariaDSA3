@@ -12,7 +12,9 @@ function Footer() {
           <h2 className="text-sm font-bold uppercase tracking-wide text-white">
             Atendimento
           </h2>
-          <p className="mt-2 text-sm text-stone-400">Terça a domingo, 18h às 23h</p>
+          <p className="mt-2 text-sm text-stone-400">
+            Terça a domingo, 18h às 23h
+          </p>
         </div>
         <div>
           <h2 className="text-sm font-bold uppercase tracking-wide text-white">

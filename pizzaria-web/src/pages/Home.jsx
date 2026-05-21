@@ -43,10 +43,13 @@ function Home() {
               Mais pedidas
             </p>
             <h2 className="text-3xl font-black text-stone-900">
-            Favoritas da casa
-          </h2>
-        </div>
-          <Link to="/cardapio" className="font-bold text-red-700 hover:text-red-900">
+              Favoritas da casa
+            </h2>
+          </div>
+          <Link
+            to="/cardapio"
+            className="font-bold text-red-700 hover:text-red-900"
+          >
             Ver todas
           </Link>
         </div>
