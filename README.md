@@ -3,6 +3,9 @@
 Projeto simplificado para TCC escolar, focado em um sistema web de pizzaria comum.
 
 ---
+# Login + senha de ADM
+- admin@pizza.com
+- 123456
 
 # Stack
 
