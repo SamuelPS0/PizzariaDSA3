@@ -1,77 +1,99 @@
-Verifique as sprints e veja se está tudo correto
-
-Pipeline Frontend Web — Sistema de Pizzaria
+# Pipeline Frontend Web — Sistema de Pizzaria
 
 Projeto simplificado para TCC escolar, focado em um sistema web de pizzaria comum.
 
-Stack:
+---
 
-React + Vite
-TailwindCSS
-React Router DOM
-Vercel + GitHub
+# Stack
 
-Escopo do frontend:
+- React + Vite
+- TailwindCSS
+- React Router DOM
+- Vercel + GitHub
 
-Home da pizzaria
-Cardápio
-Carrinho
-Página de pedido
-Painel administrativo simples
-Gerenciamento de pizzas/categorias
-Sprint 1 — Estrutura inicial e deploy
-1. Objetivo da Sprint
+---
+
+# Escopo do Frontend
+
+- Home da pizzaria
+- Cardápio
+- Carrinho
+- Página de pedido
+- Painel administrativo simples
+- Gerenciamento de pizzas/categorias
+
+---
+
+# Sprint 1 — Estrutura Inicial e Deploy
+
+## 1. Objetivo da Sprint
 
 Ter o projeto funcionando na Vercel com:
 
-Home
-Cardápio
-Header/Footer
-Rotas funcionando
-Mock de pizzas
+- Home
+- Cardápio
+- Header/Footer
+- Rotas funcionando
+- Mock de pizzas
 
-Deploy obrigatório já na primeira sprint.
+> Deploy obrigatório já na primeira sprint.
 
-2. Backlog de tarefas
-Quem está no PC
-Criar projeto Vite
-Configurar Tailwind
-Criar rotas
-Criar layout
-Criar mock de pizzas
-Fazer deploy na Vercel
-Quem está no celular
-Criar README
-Separar nomes/sabores de pizzas
-Escolher imagens
-Revisar organização do GitHub
-Testar deploy da Vercel
-3. Guia de implementação
+---
 
-Estrutura:
+## 2. Backlog de Tarefas
 
+### Quem está no PC
+
+- Criar projeto Vite
+- Configurar Tailwind
+- Criar rotas
+- Criar layout
+- Criar mock de pizzas
+- Fazer deploy na Vercel
+
+### Quem está no celular
+
+- Criar README
+- Separar nomes/sabores de pizzas
+- Escolher imagens
+- Revisar organização do GitHub
+- Testar deploy da Vercel
+
+---
+
+## 3. Guia de Implementação
+
+### Estrutura
+
+```bash
 src/
   components/
   pages/
   routes/
   data/
   services/
+```
 
-Páginas:
+### Páginas
 
+```bash
 Home.jsx
 Menu.jsx
 Cart.jsx
 AdminLogin.jsx
+```
 
-Componentes:
+### Componentes
 
+```bash
 Header.jsx
 Footer.jsx
 PizzaCard.jsx
+```
 
-Mock:
+### Mock
 
+```js
 {
   id: 1,
   nome: "Calabresa",
@@ -80,35 +102,61 @@ Mock:
   descricao: "Molho, mussarela e calabresa",
   imagem: ""
 }
+```
 
-Rotas:
+### Rotas
 
+```bash
 /
 /cardapio
 /carrinho
 /admin/login
-4. Comandos
+```
+
+---
+
+## 4. Comandos
+
+### Criar Projeto
+
+```bash
 npm create vite@latest pizzaria-web -- --template react
 cd pizzaria-web
+```
 
+### Instalar Dependências
+
+```bash
 npm install
 npm install react-router-dom axios
 npm install -D tailwindcss @tailwindcss/vite
+```
 
-Rodar:
+### Rodar Projeto
 
+```bash
 npm run dev
+```
 
-Build:
+### Build
 
+```bash
 npm run build
+```
 
-Git:
+### Git
 
+```bash
 git add .
 git commit -m "estrutura inicial"
 git push origin main
-5. Prompt para Codex
+```
+
+---
+
+## 5. Prompt para Codex
+
+```txt
 Crie um frontend React + Vite para uma pizzaria.
 
 Use:
@@ -132,66 +180,102 @@ Regras:
 - Responsivo
 - Componentes separados
 - Sem bibliotecas pesadas
-Sprint 2 — Cardápio e carrinho
-1. Objetivo da Sprint
+```
+
+---
+
+# Sprint 2 — Cardápio e Carrinho
+
+## 1. Objetivo da Sprint
 
 Usuário consegue:
 
-Ver pizzas
-Filtrar categorias
-Adicionar ao carrinho
-Alterar quantidade
-Ver total
-2. Backlog
-PC
-Criar filtro de categorias
-Criar estado global simples do carrinho
-Criar tela do carrinho
-Criar cálculo total
-Celular
-Revisar preços
-Revisar textos
-Testar fluxo
-Abrir issues no GitHub
-3. Guia de implementação
+- Ver pizzas
+- Filtrar categorias
+- Adicionar ao carrinho
+- Alterar quantidade
+- Ver total
 
-Criar:
+---
 
+## 2. Backlog
+
+### PC
+
+- Criar filtro de categorias
+- Criar estado global simples do carrinho
+- Criar tela do carrinho
+- Criar cálculo total
+
+### Celular
+
+- Revisar preços
+- Revisar textos
+- Testar fluxo
+- Abrir issues no GitHub
+
+---
+
+## 3. Guia de Implementação
+
+### Criar
+
+```bash
 CategoryFilter.jsx
 CartItem.jsx
+```
 
-Hooks:
+### Hooks
 
+```bash
 useCart.js
+```
 
-Funções:
+### Funções
 
+```js
 addToCart()
 removeFromCart()
 increaseQuantity()
 decreaseQuantity()
+```
 
-Usar:
+### Usar
 
+```js
 useState
 useContext
+```
 
-Carrinho:
+### Carrinho
 
-Produto
-Quantidade
-Subtotal
-Total
-4. Comandos
+- Produto
+- Quantidade
+- Subtotal
+- Total
+
+---
+
+## 4. Comandos
+
+```bash
 npm run dev
 npm run build
+```
 
-Git:
+### Git
 
+```bash
 git add .
 git commit -m "cardapio e carrinho"
 git push origin main
-5. Prompt para Codex
+```
+
+---
+
+## 5. Prompt para Codex
+
+```txt
 Implemente o sistema de carrinho de uma pizzaria em React + Vite.
 
 Crie:
@@ -208,60 +292,94 @@ Funcionalidades:
 Use TailwindCSS.
 
 Código simples e modular.
-Sprint 3 — Pedido e painel administrativo
-1. Objetivo da Sprint
+```
+
+---
+
+# Sprint 3 — Pedido e Painel Administrativo
+
+## 1. Objetivo da Sprint
 
 Sistema deve permitir:
 
-Finalizar pedido
-Inserir nome/endereço
-Painel admin mockado
-Gerenciar pizzas
-2. Backlog
-PC
-Criar checkout
-Criar formulário
-Criar login admin mockado
-Criar CRUD visual de pizzas
-Celular
-Revisar formulário
-Revisar fluxo
-Testar telas no celular
-Criar documentação
-3. Guia de implementação
+- Finalizar pedido
+- Inserir nome/endereço
+- Painel admin mockado
+- Gerenciar pizzas
 
-Páginas:
+---
 
+## 2. Backlog
+
+### PC
+
+- Criar checkout
+- Criar formulário
+- Criar login admin mockado
+- Criar CRUD visual de pizzas
+
+### Celular
+
+- Revisar formulário
+- Revisar fluxo
+- Testar telas no celular
+- Criar documentação
+
+---
+
+## 3. Guia de Implementação
+
+### Páginas
+
+```bash
 Checkout.jsx
 AdminDashboard.jsx
 ManagePizzas.jsx
+```
 
-Login mockado:
+### Login Mockado
 
+```txt
 admin@pizza.com
 123456
+```
 
-Salvar login:
+### Salvar Login
 
+```js
 localStorage
+```
 
-Tabela admin:
+### Tabela Admin
 
-Nome
-Preço
-Categoria
-Editar
-Excluir
-4. Comandos
+- Nome
+- Preço
+- Categoria
+- Editar
+- Excluir
+
+---
+
+## 4. Comandos
+
+```bash
 npm run dev
 npm run build
+```
 
-Git:
+### Git
 
+```bash
 git add .
 git commit -m "checkout e admin"
 git push origin main
-5. Prompt para Codex
+```
+
+---
+
+## 5. Prompt para Codex
+
+```txt
 Implemente o painel administrativo de uma pizzaria.
 
 Crie:
@@ -280,54 +398,88 @@ Use:
 - TailwindCSS
 
 Código simples e organizado.
-Sprint 4 — Integração preparada e refinamento final
-1. Objetivo da Sprint
+```
+
+---
+
+# Sprint 4 — Integração Preparada e Refinamento Final
+
+## 1. Objetivo da Sprint
 
 Projeto pronto para apresentação:
 
-Responsivo
-Visual refinado
-Services preparados
-Integração futura preparada
-README final
-2. Backlog
-PC
-Criar Axios centralizado
-Criar services
-Melhorar responsividade
-Revisar componentes
-Celular
-Revisar documentação
-Tirar prints
-Testar site
-Conferir links
-3. Guia de implementação
+- Responsivo
+- Visual refinado
+- Services preparados
+- Integração futura preparada
+- README final
 
-Criar:
+---
 
+## 2. Backlog
+
+### PC
+
+- Criar Axios centralizado
+- Criar services
+- Melhorar responsividade
+- Revisar componentes
+
+### Celular
+
+- Revisar documentação
+- Tirar prints
+- Testar site
+- Conferir links
+
+---
+
+## 3. Guia de Implementação
+
+### Criar
+
+```bash
 services/api.js
 services/pizzaService.js
+```
 
-Axios:
+### Axios
 
+```js
 import axios from "axios";
 
 export const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL
 });
+```
 
-.env.example
+### .env.example
 
+```env
 VITE_API_URL=http://localhost:8080/api
-4. Comandos
+```
+
+---
+
+## 4. Comandos
+
+```bash
 npm run build
+```
 
-Git:
+### Git
 
+```bash
 git add .
 git commit -m "refinamento final"
 git push origin main
-5. Prompt para Codex
+```
+
+---
+
+## 5. Prompt para Codex
+
+```txt
 Finalize o frontend de uma pizzaria em React + Vite.
 
 Crie:
@@ -345,3 +497,4 @@ Use:
 - TailwindCSS
 
 Não use bibliotecas pesadas.
+```
