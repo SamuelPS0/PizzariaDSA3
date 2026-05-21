@@ -68,7 +68,7 @@ Configure a variável de ambiente:
 VITE_API_URL=http://localhost:8080/api
 ```
 
-Enquanto a API não estiver disponível, o sistema usa os dados mockados de pizzas para manter a apresentação funcionando.
+Enquanto a API não estiver disponível, o sistema usa os dados mockados para manter a apresentação funcionando.
 
 ## Deploy e Prints
 
