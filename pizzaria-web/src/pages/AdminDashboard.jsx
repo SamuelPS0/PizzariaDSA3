@@ -55,12 +55,15 @@ function AdminDashboard() {
             Editar, excluir e cadastrar pizzas no cardápio.
           </p>
         </Link>
-        <div className="rounded-lg border border-orange-100 bg-white p-6 shadow-sm">
+        <Link
+          to="/admin/categorias"
+          className="rounded-lg border border-orange-100 bg-white p-6 shadow-sm hover:border-red-200"
+        >
           <h2 className="text-2xl font-black text-stone-900">Categorias</h2>
           <p className="mt-2 text-stone-600">
-            Categorias mockadas para organizar o cardápio.
+            Cadastrar, editar e excluir categorias do cardápio.
           </p>
-        </div>
+        </Link>
       </div>
     </section>
   )
